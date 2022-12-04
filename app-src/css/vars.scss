@@ -1,0 +1,9 @@
+:root {
+  --clr: 0;
+  --clr-noir: var(--clr), 20%, 10%;
+  --clr-gris: var(--clr), 10%, 50%;
+  --clr-blanc: var(--clr), 5%, 90%;
+  --clr-sombre: var(--clr), 100%, 20%;
+  --clr-claire: var(--clr), 80%, 80%;
+  --clr-accent: calc(var(--clr) + 180), 60%, 50%;
+}

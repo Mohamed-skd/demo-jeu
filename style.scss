@@ -1,0 +1,22 @@
+@use "./app-src/css/" as *;
+
+// COMPOSANTS
+body {
+  display: flow-root;
+  min-height: 100vh;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+
+  &.colonne {
+    flex-direction: column;
+  }
+}
+.grid {
+  display: grid;
+  gap: 0.4rem;
+}

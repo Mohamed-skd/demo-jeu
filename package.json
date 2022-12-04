@@ -1,0 +1,30 @@
+{
+  "name": "web-reset",
+  "private": true,
+  "type": "module",
+  "author": "Mohamed_skd",
+  "license": "ISC",
+  "scripts": {
+    "dev": "concurrently -k -n \"dev:\" -c \"blue,green,white\" \"npm:dev-*\"",
+    "prod": "concurrently -k -n \"prod:\" \"npm:prod-*\"",
+    "dev-type": "tsc -b -w",
+    "dev-sass": "sass style.scss:app-dist/style.css -w",
+    "dev-serve": "browser-sync http://serveur-dev/jeux/ ./ -w",
+    "prod-babel": "babel app-dist --out-dir app-dist",
+    "prod-postcss": "postcss app-dist/style.css -r"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.18.10",
+    "@babel/core": "^7.18.13",
+    "@babel/preset-env": "^7.18.10",
+    "autoprefixer": "^10.4.8",
+    "babel-preset-minify": "^0.5.2",
+    "browser-sync": "^2.27.10",
+    "concurrently": "^7.2.0",
+    "cssnano": "^5.1.13",
+    "postcss": "^8.4.16",
+    "postcss-cli": "^10.0.0",
+    "sass": "^1.55.0",
+    "typescript": "^4.9.3"
+  }
+}

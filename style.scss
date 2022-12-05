@@ -4,6 +4,20 @@
 body {
   display: flow-root;
   min-height: 100vh;
+  background-color: hsl(var(--clr-blanc));
+
+  header {
+    padding: 1rem 2rem;
+    background-color: white;
+    box-shadow: 0 0.2rem 0.2rem hsl(var(--clr-gris));
+  }
+
+  section {
+    margin: 2rem auto;
+    padding: 1rem 0.2rem;
+    max-width: 70rem;
+    background-color: white;
+  }
 }
 
 .flex {
@@ -19,4 +33,18 @@ body {
 .grid {
   display: grid;
   gap: 0.4rem;
+}
+
+.lien,
+button {
+  cursor: pointer;
+  padding-inline: 0.8rem;
+  color: white;
+  background-color: hsl(var(--clr-gris));
+  text-shadow: 1px 1px black;
+  &:hover {
+    color: black;
+    text-shadow: 1px 1px white;
+    background-color: hsl(var(--clr-blanc));
+  }
 }

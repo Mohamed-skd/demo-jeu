@@ -1,0 +1,30 @@
+#nav-site {
+  position: sticky;
+  top: 0;
+  padding: 0.2rem;
+  background-color: hsl(var(--clr-gris), 0.5);
+}
+
+#devinette {
+  #dev-form {
+    margin: 1rem auto;
+    padding: 1rem 0.4rem;
+    max-width: 30rem;
+    background-color: hsl(var(--clr-sombre));
+    flex-wrap: wrap;
+
+    #dev-info,
+    #dev-choix {
+      width: 100%;
+      text-align: center;
+    }
+
+    #dev-info {
+      color: white;
+    }
+
+    button {
+      margin-left: auto;
+    }
+  }
+}

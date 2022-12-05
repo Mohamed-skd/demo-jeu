@@ -8,16 +8,47 @@
     <link rel="shortcut icon" href="" type="image/x-icon" />
     <link rel="stylesheet" href="../../app-dist/style.css" />
     <script src="../../app-dist/app.js" type="module"></script>
-    <title>Document</title>
+    <title>Jeux</title>
   </head>
 
   <!-- debut de page -->
   <body>
     <header>
-      <h1></h1>
+      <h1>Jeux</h1>
     </header>
-    <nav></nav>
-    <main></main>
+
+    <nav id="nav-site">
+      <ul class="flex">
+        <li><button data-nav="devinette">Devinette</button></li>
+        <li><button data-nav="shifumi">Shifumi</button></li>
+        <li><button data-nav="morpion">Morpion</button></li>
+      </ul>
+    </nav>
+
+    <main>
+      <section id="devinette">
+        <h2>Devinette</h2>
+        <form method="post" id="dev-form" class="flex">
+          <p id="dev-info"></p>
+          <input
+            type="text"
+            name="dev-choix"
+            id="dev-choix"
+            placeholder="Choix ..."
+          />
+          <button>🍀</button>
+        </form>
+      </section>
+
+      <section id="shifumi">
+        <h2>Shifumi</h2>
+      </section>
+
+      <section id="morpion">
+        <h2>Morpion</h2>
+      </section>
+    </main>
+
     <footer></footer>
   </body>
   <!-- fin de page  -->

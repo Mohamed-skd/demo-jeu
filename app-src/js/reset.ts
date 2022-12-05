@@ -1,3 +1,16 @@
+// RESET
+// types
+type attributHtml = {
+  nom: string;
+  valeur: string | null;
+};
+
+// variables
+export const html: HTMLElement = document.documentElement,
+  body: HTMLElement = document.body,
+  head: HTMLElement = document.head;
+
+// fonctions
 /**
  * Sélectionne un élément du DOM
  * @param {string} tag  Tag css de l'élément html
@@ -80,15 +93,18 @@ export function modifClass(
  * Récupere les valeurs des attributs d'un élément
  * @param {HTMLElement} elem Element du DOM à analyser
  * @param {string[]} attrib Liste des attributs html à récupérer
- * @returns {object[]}
+ * @returns {attributHtml[]}
  */
 export function recupAttrib(
   elem: HTMLElement,
   attrib: string[] = []
-): object[] {
-  let vals: object[] = [];
+): attributHtml[] {
+  let vals: attributHtml[] = [];
   for (const attr of attrib) {
-    vals.push({ attribut: attr, valeur: elem.getAttribute(attr) });
+    vals.push({
+      nom: attr,
+      valeur: elem.getAttribute(attr),
+    });
   }
   return vals;
 }
@@ -115,11 +131,11 @@ export function style(elem: HTMLElement, attrib: object = {}): void {
  */
 export function aller(
   elem: HTMLElement,
-  cadre: Window = window,
+  cadre: Window & typeof globalThis = window,
   margeX: number = 0,
   margeY: number = 0
 ): void {
-  cadre.scroll(elem.offsetLeft - margeX, elem.offsetHeight - margeY);
+  cadre.scroll(elem.offsetLeft - margeX, elem.offsetTop - margeY);
 }
 
 /**
@@ -185,7 +201,3 @@ export async function requete(req: Promise<any>): Promise<any> {
     console.log(err);
   }
 }
-
-export const html: HTMLElement = document.documentElement,
-  body: HTMLElement = document.body,
-  head: HTMLElement = document.head;

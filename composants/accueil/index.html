@@ -7,7 +7,12 @@
     <meta name="description" content="" />
     <link rel="shortcut icon" href="" type="image/x-icon" />
     <link rel="stylesheet" href="../../app-dist/style.css" />
+    <script
+      src="https://kit.fontawesome.com/3319ca286d.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="../../app-dist/app.js" type="module"></script>
+
     <title>Jeux</title>
   </head>
 
@@ -36,12 +41,41 @@
             id="dev-choix"
             placeholder="Choix ..."
           />
-          <button>🍀</button>
+          <button><i class="fas fa-clover"></i></button>
         </form>
       </section>
 
       <section id="shifumi">
         <h2>Shifumi</h2>
+
+        <article id="shi-art" class="grid">
+          <aside id="shi-bot" class="flex">
+            <p class="emot">🤖</p>
+            <p id="shi-bot-choix" class="choix"></p>
+          </aside>
+
+          <aside id="shi-info" class="flex">
+            <p class="emot"></p>
+          </aside>
+
+          <aside id="shi-joueur" class="flex">
+            <p class="emot">👨</p>
+            <p id="shi-joueur-choix" class="choix"></p>
+          </aside>
+
+          <aside id="shi-choix" class="flex">
+            <p data-choix="0" class="choix">✊</p>
+            <p data-choix="1" class="choix">✋</p>
+            <p data-choix="2" class="choix">✌️</p>
+          </aside>
+
+          <aside id="shi-score" class="flex">
+            <h3>Score</h3>
+            <p id="shi-score-bot"></p>
+            <p id="shi-score-joueur"></p>
+            <button id="shi-reset"><i class="fas fa-repeat"></i></button>
+          </aside>
+        </article>
       </section>
 
       <section id="morpion">

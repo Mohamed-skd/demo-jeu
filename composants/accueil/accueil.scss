@@ -10,7 +10,7 @@
     margin: 1rem auto;
     padding: 1rem 0.4rem;
     max-width: 30rem;
-    background-color: hsl(var(--clr-sombre));
+    box-shadow: 0.2rem 0.2rem 0.2rem black;
     flex-wrap: wrap;
 
     #dev-info,
@@ -19,12 +19,25 @@
       text-align: center;
     }
 
-    #dev-info {
-      color: white;
-    }
-
     button {
       margin-left: auto;
+    }
+  }
+}
+
+#shifumi {
+  #shi-art {
+    margin: auto;
+    max-width: 30rem;
+    grid-template-rows: repeat(5, 4rem);
+    & > * {
+      box-shadow: 0.2rem 0.2rem 0.2rem black;
+    }
+  }
+
+  p {
+    &:empty {
+      display: none;
     }
   }
 }

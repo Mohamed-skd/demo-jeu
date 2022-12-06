@@ -48,3 +48,14 @@ button {
     background-color: hsl(var(--clr-blanc));
   }
 }
+
+.emot,
+.choix,
+button {
+  font-size: 1.6rem;
+}
+.choix {
+  cursor: pointer;
+  padding: 0.6rem;
+  background: radial-gradient(hsl(var(--clr-noir)), hsl(var(--clr-blanc)));
+}

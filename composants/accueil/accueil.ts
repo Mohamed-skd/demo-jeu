@@ -2,6 +2,7 @@ import {
   action,
   aller,
   hasard,
+  modifClass,
   recupAttrib,
   select,
   selectTout,
@@ -25,7 +26,6 @@ export default function accueil() {
   const devInfo = select("#dev-info")!;
   const devChoix = select("#dev-choix") as HTMLInputElement;
   const devHasard = hasard(101);
-
   let chances = 10;
   let info = `Vous devez deviner un nombre entre 0 et 100, Vous avez droit à ${chances} tentatives.`;
 
@@ -78,6 +78,7 @@ export default function accueil() {
   const shiScoreBot = select("#shi-score-bot")!;
   const shiReset = select("#shi-reset")!;
   const shiChoixTab = ["✊", "✋", "✌️"];
+  const shiMedia50rem = matchMedia("(min-width:50rem)");
   let scoreJoueurShi = 0;
   let scoreBotShi = 0;
   let infoShi = "🍀";
@@ -89,8 +90,25 @@ export default function accueil() {
     shiScoreJoueur.textContent = `${emotJoueur} : ${scoreJoueurShi}`;
     shiScoreBot.textContent = `🤖 : ${scoreBotShi}`;
   }
+  function shiMedia(mediaQuery: MediaQueryList | MediaQueryListEvent) {
+    const sects = [
+      select("#shi-bot")!,
+      select("#shi-joueur")!,
+      select("#shi-score")!,
+    ];
 
+    for (const sect of sects) {
+      if (mediaQuery.matches) {
+        modifClass(sect, "add", "colonne");
+      } else {
+        modifClass(sect, "sup", "colonne");
+      }
+    }
+  }
+
+  shiMedia(shiMedia50rem);
   shiInfos();
+  shiMedia50rem.addEventListener("change", shiMedia);
   action(shiReset, "click", () => {
     location.assign("");
   });
@@ -122,7 +140,8 @@ export default function accueil() {
         infoShi = "Égalité.";
       }
     }
-
     shiInfos();
   });
+
+  // morpion
 }

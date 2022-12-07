@@ -50,12 +50,14 @@ button {
 }
 
 .emot,
-.choix,
-button {
+.choix {
   font-size: 1.6rem;
 }
 .choix {
   cursor: pointer;
   padding: 0.6rem;
   background: radial-gradient(hsl(var(--clr-noir)), hsl(var(--clr-blanc)));
+  &:hover {
+    box-shadow: 0 0 0 1px black;
+  }
 }

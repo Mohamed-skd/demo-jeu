@@ -1,0 +1,260 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+:root {
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* textes  */
+h1,
+h2,
+h3,
+h4 {
+  margin: 0.4rem;
+  padding: 0.4rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+h3 {
+  font-size: clamp(1.2rem, 2vw, 2.2rem);
+}
+
+h2 {
+  font-size: clamp(1.6rem, 6vw, 2.6rem);
+}
+
+h1 {
+  font-size: clamp(2rem, 8vw, 3rem);
+}
+
+p,
+a,
+li,
+blockquote,
+input,
+textarea,
+button,
+label,
+legend,
+th,
+td {
+  margin: 0.2rem;
+  padding: 0.2rem;
+  font-size: 1rem;
+  text-decoration: none;
+  resize: none;
+  list-style: none;
+  border: none;
+}
+
+/* images  */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+:root {
+  --clr: 0;
+  --clr-noir: var(--clr), 20%, 10%;
+  --clr-gris: var(--clr), 10%, 50%;
+  --clr-blanc: var(--clr), 5%, 90%;
+  --clr-sombre: var(--clr), 100%, 20%;
+  --clr-claire: var(--clr), 80%, 80%;
+  --clr-accent: calc(var(--clr) + 180), 60%, 50%;
+}
+
+@keyframes roue {
+  100% {
+    rotate: 360deg;
+  }
+}
+#nav-site {
+  position: sticky;
+  top: 0;
+  padding: 0.2rem;
+  background-color: hsl(var(--clr-gris));
+}
+
+#devinette #dev-jeu {
+  margin: 1rem auto;
+  padding: 1rem 0.4rem;
+  max-width: 50rem;
+  box-shadow: 0.2rem 0.2rem 0.2rem black;
+  flex-wrap: wrap;
+}
+#devinette #dev-jeu #dev-info,
+#devinette #dev-jeu #dev-choix {
+  width: 100%;
+  text-align: center;
+}
+#devinette #dev-jeu button {
+  margin-left: auto;
+}
+
+#shifumi #shi-jeu {
+  margin: auto;
+  max-width: 50rem;
+  grid-template-rows: repeat(5, 4rem);
+}
+#shifumi #shi-jeu > * {
+  box-shadow: 0.2rem 0.2rem 0.2rem black;
+}
+@media (min-width: 40rem) {
+  #shifumi #shi-jeu {
+    grid-template: repeat(5, 4rem)/repeat(5, 1fr);
+  }
+}
+@media (min-width: 40rem) {
+  #shifumi #shi-jeu #shi-bot {
+    grid-area: 1/1/4/2;
+  }
+}
+@media (min-width: 40rem) {
+  #shifumi #shi-jeu #shi-info {
+    grid-area: 1/2/4/4;
+  }
+}
+@media (min-width: 40rem) {
+  #shifumi #shi-jeu #shi-joueur {
+    grid-area: 1/4/4/5;
+  }
+}
+@media (min-width: 40rem) {
+  #shifumi #shi-jeu #shi-choix {
+    grid-area: 4/1/6/5;
+  }
+}
+@media (min-width: 40rem) {
+  #shifumi #shi-jeu #shi-score {
+    grid-area: 1/5/6/6;
+  }
+}
+#shifumi p:empty {
+  display: none;
+}
+#shifumi .emot,
+#shifumi .choix {
+  font-size: 1.6rem;
+}
+#shifumi .choix {
+  cursor: pointer;
+  padding: 0.6rem;
+  background: radial-gradient(hsl(var(--clr-noir)), hsl(var(--clr-blanc)));
+}
+#shifumi .choix:hover {
+  box-shadow: 0 0 0 1px black;
+}
+
+#morpion #morp-jeu {
+  margin: auto;
+  max-width: 50rem;
+}
+@media (min-width: 40rem) {
+  #morpion #morp-jeu {
+    grid-template-columns: 70% 30%;
+  }
+}
+#morpion #morp-jeu #morp-grille {
+  grid-template-columns: repeat(3, 1fr);
+}
+#morpion #morp-jeu #morp-score {
+  box-shadow: 0.2rem 0.2rem 0.2rem black;
+}
+#morpion #morp-jeu .morp-case {
+  cursor: pointer;
+  font-size: 3rem;
+  box-shadow: 0.2rem 0.2rem 0.2rem black;
+  aspect-ratio: 1/1;
+}
+
+body {
+  display: flow-root;
+  min-height: 100vh;
+  background-color: hsl(var(--clr-blanc));
+}
+body header {
+  padding: 1rem 2rem;
+  background-color: white;
+  box-shadow: 0 0.2rem 0.2rem hsl(var(--clr-gris));
+}
+body section {
+  margin: 2rem auto;
+  padding: 1rem 0.2rem;
+  max-width: 70rem;
+  background-color: white;
+}
+body footer {
+  color: white;
+  background-color: hsl(var(--clr-noir));
+}
+body footer > * {
+  margin-left: auto;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+}
+.flex.colonne {
+  flex-direction: column;
+}
+
+.grid {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.lien,
+button {
+  cursor: pointer;
+  padding-inline: 0.8rem;
+  color: white;
+  background-color: hsl(var(--clr-gris));
+  text-shadow: 1px 1px black;
+}
+.lien:hover,
+button:hover {
+  color: black;
+  text-shadow: 1px 1px white;
+  background-color: hsl(var(--clr-blanc));
+}
+
+.loader {
+  margin: 1rem auto;
+  width: 20rem;
+  height: 5rem;
+  position: relative;
+}
+.loader::before {
+  content: "";
+  position: absolute;
+  width: 20%;
+  left: 40%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background: repeating-conic-gradient(hsl(var(--clr-blanc)), hsl(var(--clr-noir)) 270deg);
+  animation: roue 2s linear infinite;
+}
+.loader::after {
+  content: "";
+  position: absolute;
+  width: 16%;
+  left: 42%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background-color: hsl(var(--clr-blanc));
+}
+
+#copyright {
+  color: white;
+}
+
+/*# sourceMappingURL=style.css.map */

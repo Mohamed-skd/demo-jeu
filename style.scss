@@ -18,6 +18,14 @@ body {
     max-width: 70rem;
     background-color: white;
   }
+
+  footer {
+    color: white;
+    background-color: hsl(var(--clr-noir));
+    & > * {
+      margin-left: auto;
+    }
+  }
 }
 
 .flex {
@@ -63,7 +71,7 @@ button {
     border-radius: 50%;
     background: repeating-conic-gradient(
       hsl(var(--clr-blanc)),
-      hsl(var(--clr-noir)) 90deg
+      hsl(var(--clr-noir)) 270deg
     );
     animation: roue 2s linear infinite;
   }
@@ -76,4 +84,8 @@ button {
     border-radius: 50%;
     background-color: hsl(var(--clr-blanc));
   }
+}
+
+#copyright {
+  color: white;
 }

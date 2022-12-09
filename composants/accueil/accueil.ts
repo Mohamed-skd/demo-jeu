@@ -29,6 +29,11 @@ export default function accueil() {
     morpMedia(mediaTaille1);
   });
 
+  // copyright
+  const copyright = select("#copyright")!;
+  const date = new Date();
+  copyright.textContent = `Tout droit réservé © ${date.getFullYear()}`;
+
   // devinette
   const devJeu = select("#dev-jeu")!;
   const devInfo = select("#dev-info")!;

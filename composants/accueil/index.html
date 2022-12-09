@@ -35,7 +35,7 @@
     <main>
       <section id="devinette">
         <h2>Devinette</h2>
-        <form method="post" id="dev-form" class="flex">
+        <form method="post" id="dev-jeu" class="flex">
           <p id="dev-info"></p>
           <input
             type="text"
@@ -50,7 +50,7 @@
       <section id="shifumi">
         <h2>Shifumi</h2>
 
-        <article id="shi-art" class="grid">
+        <article id="shi-jeu" class="grid">
           <aside id="shi-bot" class="flex">
             <p class="emot">🤖</p>
             <p id="shi-bot-choix" class="choix"></p>
@@ -82,14 +82,27 @@
 
       <section id="morpion">
         <h2>Morpion</h2>
+
+        <article id="morp-jeu" class="grid">
+          <aside id="morp-grille" class="grid"></aside>
+          <aside id="morp-score" class="flex">
+            <h3>Score</h3>
+            <p id="morp-info"></p>
+            <p id="morp-scoreX"></p>
+            <p id="morp-scoreO"></p>
+            <button id="morp-reset"><i class="fas fa-repeat"></i></button>
+          </aside>
+        </article>
       </section>
 
       <section id="snake">
         <h2>Snake</h2>
+        <div class="loader flex"></div>
       </section>
 
       <section id="puissance-4">
         <h2>Puissance 4</h2>
+        <div class="loader flex"></div>
       </section>
     </main>
 

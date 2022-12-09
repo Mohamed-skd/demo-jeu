@@ -49,15 +49,31 @@ button {
   }
 }
 
-.emot,
-.choix {
-  font-size: 1.6rem;
-}
-.choix {
-  cursor: pointer;
-  padding: 0.6rem;
-  background: radial-gradient(hsl(var(--clr-noir)), hsl(var(--clr-blanc)));
-  &:hover {
-    box-shadow: 0 0 0 1px black;
+.loader {
+  margin: 1rem auto;
+  width: 20rem;
+  height: 5rem;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    width: 20%;
+    left: 40%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background: repeating-conic-gradient(
+      hsl(var(--clr-blanc)),
+      hsl(var(--clr-noir)) 90deg
+    );
+    animation: roue 2s linear infinite;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    width: 16%;
+    left: 42%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background-color: hsl(var(--clr-blanc));
   }
 }

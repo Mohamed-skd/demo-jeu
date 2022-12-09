@@ -1,17 +1,20 @@
 import {
   action,
   aller,
+  creer,
   hasard,
   modifClass,
   recupAttrib,
   select,
   selectTout,
+  style,
 } from "../../app-src/js/reset.js";
 
 export default function accueil() {
   // nav site
   const navSite = select("#nav-site")!;
   const navSiteBts = selectTout("#nav-site button");
+  const mediaTaille1 = matchMedia("(min-width:40rem)");
 
   for (const navSiteBt of navSiteBts) {
     action(navSiteBt, "click", () => {
@@ -21,8 +24,13 @@ export default function accueil() {
     });
   }
 
+  mediaTaille1.addEventListener("change", () => {
+    shiMedia(mediaTaille1);
+    morpMedia(mediaTaille1);
+  });
+
   // devinette
-  const devForm = select("#dev-form")!;
+  const devJeu = select("#dev-jeu")!;
   const devInfo = select("#dev-info")!;
   const devChoix = select("#dev-choix") as HTMLInputElement;
   const devHasard = hasard(101);
@@ -41,7 +49,7 @@ export default function accueil() {
   }
 
   devInfos();
-  action(devForm, "submit", (e) => {
+  action(devJeu, "submit", (e) => {
     e.preventDefault();
     const choix = parseInt(devChoix?.value as string);
 
@@ -78,7 +86,7 @@ export default function accueil() {
   const shiScoreBot = select("#shi-score-bot")!;
   const shiReset = select("#shi-reset")!;
   const shiChoixTab = ["✊", "✋", "✌️"];
-  const shiMedia50rem = matchMedia("(min-width:50rem)");
+
   let scoreJoueurShi = 0;
   let scoreBotShi = 0;
   let infoShi = "🍀";
@@ -106,9 +114,8 @@ export default function accueil() {
     }
   }
 
-  shiMedia(shiMedia50rem);
+  shiMedia(mediaTaille1);
   shiInfos();
-  shiMedia50rem.addEventListener("change", shiMedia);
   action(shiReset, "click", () => {
     location.assign("");
   });
@@ -144,4 +151,104 @@ export default function accueil() {
   });
 
   // morpion
+  const morpGrille = select("#morp-grille")!;
+  const morpInfo = select("#morp-info")!;
+  const morpScoreX = select("#morp-scoreX")!;
+  const morpScoreO = select("#morp-scoreO")!;
+  const morpReset = select("#morp-reset")!;
+  let infoMorp = "✌️";
+  let scoreXMorp = 0;
+  let scoreOMorp = 0;
+  let morpTourJoueur = false;
+  let morpEnCours = true;
+  let morpJoueur = "";
+  let morpJeu: any[] = ["", "", "", "", "", "", "", "", ""];
+  let morpVictoires = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+
+  function morpInfos() {
+    morpInfo.textContent = infoMorp;
+    morpScoreX.textContent = `Joueur X : ${scoreXMorp}`;
+    morpScoreO.textContent = `Joueur O : ${scoreOMorp}`;
+  }
+  function morpMedia(mediaQuery: MediaQueryList | MediaQueryListEvent) {
+    const sects = [select("#morp-score")!];
+
+    for (const sect of sects) {
+      if (mediaQuery.matches) {
+        modifClass(sect, "add", "colonne");
+      } else {
+        modifClass(sect, "sup", "colonne");
+      }
+    }
+  }
+  function resetMorp() {
+    setTimeout(() => {
+      morpEnCours = true;
+      infoMorp = "✌️";
+      morpJeu.map((jeu) => (jeu = ""));
+      morpCases.map((elem) => (elem.textContent = ""));
+      morpInfos();
+    }, 1000);
+  }
+
+  for (let i = 0; i < morpJeu.length; i++) {
+    const morpCase = creer("div", {
+      class: "morp-case flex",
+      id: `morp-case-${i}`,
+    });
+    morpGrille.append(morpCase);
+  }
+  const morpCases = selectTout(".morp-case");
+
+  morpMedia(mediaTaille1);
+  morpInfos();
+  action(morpReset, "click", () => {
+    location.assign("");
+  });
+  action(morpGrille, "click", (e) => {
+    const choix = e.target as HTMLElement;
+
+    if (choix.classList.contains("morp-case")) {
+      const cible = select(`#${choix.id}`)!;
+
+      if (cible.textContent !== "" || !morpEnCours) return;
+
+      morpTourJoueur = !morpTourJoueur;
+      morpJoueur = morpTourJoueur === true ? "X" : "O";
+      cible.textContent = morpJoueur;
+
+      for (let i = 0; i < morpJeu.length; i++) {
+        morpJeu[i] = morpCases[i].textContent;
+      }
+    }
+
+    for (const gain of morpVictoires) {
+      if (
+        morpJeu[gain[0]] &&
+        morpJeu[gain[0]] === morpJeu[gain[1]] &&
+        morpJeu[gain[0]] === morpJeu[gain[2]]
+      ) {
+        morpEnCours = false;
+        morpJoueur === "X" ? scoreXMorp++ : scoreOMorp++;
+        infoMorp = `Joueur ${morpJoueur} à gagné !`;
+        resetMorp();
+      }
+    }
+
+    if (!morpJeu.includes("") && morpEnCours) {
+      infoMorp = "🥱";
+      resetMorp();
+    }
+
+    morpInfos();
+  });
 }

@@ -28,6 +28,20 @@ body {
   }
 }
 
+#nav-site {
+  position: sticky;
+  top: 0;
+  padding: 0.2rem;
+  background-color: hsl(var(--clr-gris));
+  ul {
+    flex-wrap: wrap;
+  }
+}
+#copyright {
+  padding-right: 2rem;
+  color: white;
+}
+
 .flex {
   display: flex;
   justify-content: center;
@@ -42,21 +56,6 @@ body {
   display: grid;
   gap: 0.4rem;
 }
-
-.lien,
-button {
-  cursor: pointer;
-  padding-inline: 0.8rem;
-  color: white;
-  background-color: hsl(var(--clr-gris));
-  text-shadow: 1px 1px black;
-  &:hover {
-    color: black;
-    text-shadow: 1px 1px white;
-    background-color: hsl(var(--clr-blanc));
-  }
-}
-
 .loader {
   margin: 1rem auto;
   width: 20rem;
@@ -86,6 +85,16 @@ button {
   }
 }
 
-#copyright {
+.lien,
+button {
+  cursor: pointer;
+  padding-inline: 0.8rem;
   color: white;
+  background-color: hsl(var(--clr-gris));
+  text-shadow: 1px 1px black;
+  &:hover {
+    color: black;
+    text-shadow: 1px 1px white;
+    background-color: hsl(var(--clr-blanc));
+  }
 }

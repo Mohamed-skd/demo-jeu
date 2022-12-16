@@ -90,11 +90,17 @@ button {
   cursor: pointer;
   padding-inline: 0.8rem;
   color: white;
-  background-color: hsl(var(--clr-gris));
+  background-color: hsl(var(--clr-sombre));
   text-shadow: 1px 1px black;
   &:hover {
     color: black;
     text-shadow: 1px 1px white;
     background-color: hsl(var(--clr-blanc));
+  }
+}
+button {
+  box-shadow: 0.2rem 0.2rem 0.2rem black;
+  &:active {
+    box-shadow: inset 0.2rem 0.2rem 0.2rem black;
   }
 }

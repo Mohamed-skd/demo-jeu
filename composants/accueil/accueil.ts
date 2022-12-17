@@ -7,27 +7,40 @@ import {
   recupAttrib,
   select,
   selectTout,
-  style,
 } from "../../app-src/js/reset.js";
 
 export default function accueil() {
   // nav site
-  const navSite = select("#nav-site")!;
-  const navSiteBts = selectTout("#nav-site button");
   const mediaTaille1 = matchMedia("(min-width:40rem)");
 
-  for (const navSiteBt of navSiteBts) {
-    action(navSiteBt, "click", () => {
-      const dataNav = recupAttrib(navSiteBt, ["data-nav"]);
-      const cible = select(`#${dataNav[0].valeur}`)!;
-      aller(cible, window, 0, navSite?.offsetHeight);
-    });
+  function navSite() {
+    const navSite = select("#nav-site")!;
+    const navSiteBts = selectTout("#nav-site button");
+
+    for (const navSiteBt of navSiteBts) {
+      action(navSiteBt, "click", () => {
+        const dataNav = recupAttrib(navSiteBt, ["data-nav"]);
+        const cible = select(`#${dataNav[0].valeur}`)!;
+        aller(cible, window, 0, navSite.offsetHeight);
+      });
+    }
   }
+  navSite();
 
   mediaTaille1.addEventListener("change", () => {
+    navSite();
     shiMedia(mediaTaille1);
     morpMedia(mediaTaille1);
   });
+
+  // reset
+  const resets = selectTout(".reset");
+
+  for (const reset of resets) {
+    action(reset, "click", () => {
+      location.assign("");
+    });
+  }
 
   // copyright
   const copyright = select("#copyright")!;
@@ -89,8 +102,7 @@ export default function accueil() {
   const shiChoix = select("#shi-choix")!;
   const shiScoreJoueur = select("#shi-score-joueur")!;
   const shiScoreBot = select("#shi-score-bot")!;
-  const shiReset = select("#shi-reset")!;
-  const shiChoixTab = ["✊", "✋", "✌️"];
+  const shiChoixTab: string[] = ["✊", "✋", "✌️"];
 
   let scoreJoueurShi = 0;
   let scoreBotShi = 0;
@@ -121,9 +133,6 @@ export default function accueil() {
 
   shiMedia(mediaTaille1);
   shiInfos();
-  action(shiReset, "click", () => {
-    location.assign("");
-  });
   action(shiChoix, "click", (e) => {
     const choix = e.target as HTMLElement;
 
@@ -160,15 +169,14 @@ export default function accueil() {
   const morpInfo = select("#morp-info")!;
   const morpScoreX = select("#morp-scoreX")!;
   const morpScoreO = select("#morp-scoreO")!;
-  const morpReset = select("#morp-reset")!;
   let infoMorp = "✌️";
   let scoreXMorp = 0;
   let scoreOMorp = 0;
   let morpTourJoueur = false;
   let morpEnCours = true;
   let morpJoueur = "";
-  let morpJeu: any[] = ["", "", "", "", "", "", "", "", ""];
-  let morpVictoires = [
+  let morpJeu: string[] = ["", "", "", "", "", "", "", "", ""];
+  let morpVictoires: number[][] = [
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
@@ -216,9 +224,6 @@ export default function accueil() {
 
   morpMedia(mediaTaille1);
   morpInfos();
-  action(morpReset, "click", () => {
-    location.assign("");
-  });
   action(morpGrille, "click", (e) => {
     const choix = e.target as HTMLElement;
 
@@ -232,7 +237,7 @@ export default function accueil() {
       cible.textContent = morpJoueur;
 
       for (let i = 0; i < morpJeu.length; i++) {
-        morpJeu[i] = morpCases[i].textContent;
+        morpJeu[i] = morpCases[i].textContent as string;
       }
     }
 

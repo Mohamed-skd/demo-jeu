@@ -1,1 +1,218 @@
-function _createForOfIteratorHelper(a,e){var c="undefined"!=typeof Symbol&&a[Symbol.iterator]||a["@@iterator"];if(!c){if(Array.isArray(a)||(c=_unsupportedIterableToArray(a))||e&&a&&"number"==typeof a.length){c&&(a=c);var g=0,i=function(){};return{s:i,n:function(){return g>=a.length?{done:!0}:{done:!1,value:a[g++]}},e:function e(a){throw a},f:i}}throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}var j,k=!0,l=!1;return{s:function s(){c=c.call(a)},n:function(){var a=c.next();return k=a.done,a},e:function e(a){l=!0,j=a},f:function b(){try{k||null==c["return"]||c["return"]()}finally{if(l)throw b}}}}function _unsupportedIterableToArray(c,d){if(c){if("string"==typeof c)return _arrayLikeToArray(c,d);var a=Object.prototype.toString.call(c).slice(8,-1);return"Object"===a&&c.constructor&&(a=c.constructor.name),"Map"===a||"Set"===a?Array.from(c):"Arguments"===a||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(a)?_arrayLikeToArray(c,d):void 0}}function _arrayLikeToArray(a,b){(null==b||b>a.length)&&(b=a.length);for(var d=0,e=Array(b);d<b;d++)e[d]=a[d];return e}import{action,aller,creer,hasard,modifClass,recupAttrib,select,selectTout}from"../../app-src/js/reset.js";export default function accueil(){function a(){var d,h=select("#nav-site"),b=selectTout("#nav-site button"),f=_createForOfIteratorHelper(b);try{var e=function a(){var f=d.value;action(f,"click",function(){var a=recupAttrib(f,["data-nav"]),b=select("#".concat(a[0].valeur));aller(b,window,0,h.offsetHeight)})};for(f.s();!(d=f.n()).done;)e()}catch(a){f.e(a)}finally{f.f()}}function o(){y.textContent=A,z.value=""}function d(){z.disabled=!0,setTimeout(function(){location.assign("")},1e3)}function t(){var a=w>I?"\uD83D\uDE0A":"\uD83D\uDE10";D.textContent=K,G.textContent="".concat(a," : ").concat(w),H.textContent="\uD83E\uDD16 : ".concat(I)}function c(a){for(var b,c=[select("#shi-bot"),select("#shi-joueur"),select("#shi-score")],e=0,g=c;e<g.length;e++)b=g[e],a.matches?modifClass(b,"add","colonne"):modifClass(b,"sup","colonne")}function e(){T.textContent=P,O.textContent="Joueur X : ".concat(U),Q.textContent="Joueur O : ".concat(V)}function g(a){for(var b,c=[select("#morp-score")],e=0,g=c;e<g.length;e++)b=g[e],a.matches?modifClass(b,"add","colonne"):modifClass(b,"sup","colonne")}function i(){setTimeout(function(){X=!0,P="\u270C\uFE0F",Z.map(function(a){return a=""}),ga.map(function(a){return a.textContent=""}),e()},1e3)}var h=matchMedia("(min-width:40rem)");a(),h.addEventListener("change",function(){a(),c(h),g(h)});var b,j=selectTout(".reset"),k=_createForOfIteratorHelper(j);try{for(k.s();!(b=k.n()).done;){var q=b.value;action(q,"click",function(){location.assign("")})}}catch(a){k.e(a)}finally{k.f()}var r=select("#copyright"),s=new Date;r.textContent="Tout droit r\xE9serv\xE9 \xA9 ".concat(s.getFullYear());var u=select("#dev-jeu"),y=select("#dev-info"),z=select("#dev-choix"),l=hasard(101),m=10,A="Vous devez deviner un nombre entre 0 et 100, Vous avez droit \xE0 ".concat(m," tentatives.");o(),action(u,"submit",function(a){a.preventDefault();var b=parseInt(null===z||void 0===z?void 0:z.value);return isNaN(b)||0>b||100<b?(A="Vous devez choisir un nombre entre 0 et 100 \uD83D\uDC40",void o()):void(b===l?(A="Bravo \uD83D\uDE0A ! Vous avez trouv\xE9 ".concat(l,"."),d()):b!==l&&1===m?(A="Dommage \uD83D\uDE22 ! Il fallait trouver ".concat(l,"."),d()):b<l?(m--,A="".concat(b," est trop petit. Il vous reste ").concat(m," tentatives \u270A")):b>l&&(m--,A="".concat(b," est trop grand. Il vous reste ").concat(m," tentatives \u270A")),o(),z.focus())});var C=select("#shi-bot-choix"),D=select("#shi-info p"),F=select("#shi-joueur-choix"),E=select("#shi-choix"),G=select("#shi-score-joueur"),H=select("#shi-score-bot"),v=["\u270A","\u270B","\u270C\uFE0F"],w=0,I=0,K="\uD83C\uDF40";c(h),t(),action(E,"click",function(d){var a=d.target;if(a.dataset.choix){var b=parseInt(a.dataset.choix),c=hasard(3);F.textContent=v[b],C.textContent=v[c],0===b&&2===c||1===b&&0===c||2===b&&1===c?(K="Gagn\xE9 !",w++):2===b&&0===c||0===b&&1===c||1===b&&2===c?(K="Perdu !",I++):K="\xC9galit\xE9."}t()});for(var M,N=select("#morp-grille"),T=select("#morp-info"),O=select("#morp-scoreX"),Q=select("#morp-scoreO"),P="\u270C\uFE0F",U=0,V=0,W=!1,X=!0,Y="",Z=["","","","","","","","",""],ea=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]],$=0;$<Z.length;$++)M=creer("div",{class:"morp-case flex",id:"morp-case-".concat($)}),N.append(M);var ga=selectTout(".morp-case");g(h),e(),action(N,"click",function(g){var a=g.target;if(a.classList.contains("morp-case")){var b=select("#".concat(a.id));if(""!==b.textContent||!X)return;W=!W,Y=!0==W?"X":"O",b.textContent=Y;for(var c=0;c<Z.length;c++)Z[c]=ga[c].textContent}var j,k=_createForOfIteratorHelper(ea);try{for(k.s();!(j=k.n()).done;){var h=j.value;Z[h[0]]&&Z[h[0]]===Z[h[1]]&&Z[h[0]]===Z[h[2]]&&(X=!1,"X"===Y?U++:V++,P="Joueur ".concat(Y," \xE0 gagn\xE9 !"),i())}}catch(a){k.e(a)}finally{k.f()}!Z.includes("")&&X&&(P="\uD83E\uDD71",i()),e()})}
+import { action, aller, creer, hasard, modifClass, recupAttrib, select, selectTout, } from "../../app-src/js/reset.js";
+export default function accueil() {
+    const mediaTaille1 = matchMedia("(min-width:40rem)");
+    function navSite() {
+        const navSite = select("#nav-site");
+        const navSiteBts = selectTout("#nav-site button");
+        for (const navSiteBt of navSiteBts) {
+            action(navSiteBt, "click", () => {
+                const dataNav = recupAttrib(navSiteBt, ["data-nav"]);
+                const cible = select(`#${dataNav[0].valeur}`);
+                aller(cible, window, 0, navSite.offsetHeight);
+            });
+        }
+    }
+    navSite();
+    mediaTaille1.addEventListener("change", () => {
+        navSite();
+        shiMedia(mediaTaille1);
+        morpMedia(mediaTaille1);
+    });
+    const resets = selectTout(".reset");
+    for (const reset of resets) {
+        action(reset, "click", () => {
+            location.assign("");
+        });
+    }
+    const copyright = select("#copyright");
+    const date = new Date();
+    copyright.textContent = `Tout droit réservé © ${date.getFullYear()}`;
+    const devJeu = select("#dev-jeu");
+    const devInfo = select("#dev-info");
+    const devChoix = select("#dev-choix");
+    const devHasard = hasard(101);
+    let chances = 10;
+    let info = `Vous devez deviner un nombre entre 0 et 100, Vous avez droit à ${chances} tentatives.`;
+    function devInfos() {
+        devInfo.textContent = info;
+        devChoix.value = "";
+    }
+    function devReset() {
+        devChoix.disabled = true;
+        setTimeout(() => {
+            location.assign("");
+        }, 1000);
+    }
+    devInfos();
+    action(devJeu, "submit", (e) => {
+        e.preventDefault();
+        const choix = parseInt(devChoix?.value);
+        if (isNaN(choix) || choix < 0 || choix > 100) {
+            info = "Vous devez choisir un nombre entre 0 et 100 👀";
+            devInfos();
+            return;
+        }
+        if (choix === devHasard) {
+            info = `Bravo 😊 ! Vous avez trouvé ${devHasard}.`;
+            devReset();
+        }
+        else if (choix !== devHasard && chances === 1) {
+            info = `Dommage 😢 ! Il fallait trouver ${devHasard}.`;
+            devReset();
+        }
+        else if (choix < devHasard) {
+            chances--;
+            info = `${choix} est trop petit. Il vous reste ${chances} tentatives ✊`;
+        }
+        else if (choix > devHasard) {
+            chances--;
+            info = `${choix} est trop grand. Il vous reste ${chances} tentatives ✊`;
+        }
+        devInfos();
+        devChoix.focus();
+    });
+    const shiBot = select("#shi-bot-choix");
+    const shiInfo = select("#shi-info p");
+    const shiJoueur = select("#shi-joueur-choix");
+    const shiChoix = select("#shi-choix");
+    const shiScoreJoueur = select("#shi-score-joueur");
+    const shiScoreBot = select("#shi-score-bot");
+    const shiChoixTab = ["✊", "✋", "✌️"];
+    let scoreJoueurShi = 0;
+    let scoreBotShi = 0;
+    let infoShi = "🍀";
+    function shiInfos() {
+        const emotJoueur = scoreJoueurShi > scoreBotShi ? "😊" : "😐";
+        shiInfo.textContent = infoShi;
+        shiScoreJoueur.textContent = `${emotJoueur} : ${scoreJoueurShi}`;
+        shiScoreBot.textContent = `🤖 : ${scoreBotShi}`;
+    }
+    function shiMedia(mediaQuery) {
+        const sects = [
+            select("#shi-bot"),
+            select("#shi-joueur"),
+            select("#shi-score"),
+        ];
+        for (const sect of sects) {
+            if (mediaQuery.matches) {
+                modifClass(sect, "add", "colonne");
+            }
+            else {
+                modifClass(sect, "sup", "colonne");
+            }
+        }
+    }
+    shiMedia(mediaTaille1);
+    shiInfos();
+    action(shiChoix, "click", (e) => {
+        const choix = e.target;
+        if (choix.dataset.choix) {
+            const choixJoueur = parseInt(choix.dataset.choix);
+            const choixBot = hasard(3);
+            shiJoueur.textContent = shiChoixTab[choixJoueur];
+            shiBot.textContent = shiChoixTab[choixBot];
+            if ((choixJoueur === 0 && choixBot === 2) ||
+                (choixJoueur === 1 && choixBot === 0) ||
+                (choixJoueur === 2 && choixBot === 1)) {
+                infoShi = "Gagné !";
+                scoreJoueurShi++;
+            }
+            else if ((choixJoueur === 2 && choixBot === 0) ||
+                (choixJoueur === 0 && choixBot === 1) ||
+                (choixJoueur === 1 && choixBot === 2)) {
+                infoShi = "Perdu !";
+                scoreBotShi++;
+            }
+            else {
+                infoShi = "Égalité.";
+            }
+        }
+        shiInfos();
+    });
+    const morpGrille = select("#morp-grille");
+    const morpInfo = select("#morp-info");
+    const morpScoreX = select("#morp-scoreX");
+    const morpScoreO = select("#morp-scoreO");
+    let infoMorp = "✌️";
+    let scoreXMorp = 0;
+    let scoreOMorp = 0;
+    let morpTourJoueur = false;
+    let morpEnCours = true;
+    let morpJoueur = "";
+    let morpJeu = ["", "", "", "", "", "", "", "", ""];
+    let morpVictoires = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+    ];
+    function morpInfos() {
+        morpInfo.textContent = infoMorp;
+        morpScoreX.textContent = `Joueur X : ${scoreXMorp}`;
+        morpScoreO.textContent = `Joueur O : ${scoreOMorp}`;
+    }
+    function morpMedia(mediaQuery) {
+        const sects = [select("#morp-score")];
+        for (const sect of sects) {
+            if (mediaQuery.matches) {
+                modifClass(sect, "add", "colonne");
+            }
+            else {
+                modifClass(sect, "sup", "colonne");
+            }
+        }
+    }
+    function resetMorp() {
+        setTimeout(() => {
+            morpEnCours = true;
+            infoMorp = "✌️";
+            morpJeu.map((jeu) => (jeu = ""));
+            morpCases.map((elem) => (elem.textContent = ""));
+            morpInfos();
+        }, 1000);
+    }
+    for (let i = 0; i < morpJeu.length; i++) {
+        const morpCase = creer("div", {
+            class: "morp-case flex",
+            id: `morp-case-${i}`,
+        });
+        morpGrille.append(morpCase);
+    }
+    const morpCases = selectTout(".morp-case");
+    morpMedia(mediaTaille1);
+    morpInfos();
+    action(morpGrille, "click", (e) => {
+        const choix = e.target;
+        if (choix.classList.contains("morp-case")) {
+            const cible = select(`#${choix.id}`);
+            if (cible.textContent !== "" || !morpEnCours)
+                return;
+            morpTourJoueur = !morpTourJoueur;
+            morpJoueur = morpTourJoueur === true ? "X" : "O";
+            cible.textContent = morpJoueur;
+            for (let i = 0; i < morpJeu.length; i++) {
+                morpJeu[i] = morpCases[i].textContent;
+            }
+        }
+        for (const gain of morpVictoires) {
+            if (morpJeu[gain[0]] &&
+                morpJeu[gain[0]] === morpJeu[gain[1]] &&
+                morpJeu[gain[0]] === morpJeu[gain[2]]) {
+                morpEnCours = false;
+                morpJoueur === "X" ? scoreXMorp++ : scoreOMorp++;
+                infoMorp = `Joueur ${morpJoueur} à gagné !`;
+                resetMorp();
+            }
+        }
+        if (!morpJeu.includes("") && morpEnCours) {
+            infoMorp = "🥱";
+            resetMorp();
+        }
+        morpInfos();
+    });
+}
+//# sourceMappingURL=accueil.js.map

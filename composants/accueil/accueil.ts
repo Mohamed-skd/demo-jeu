@@ -115,7 +115,7 @@ export default function accueil() {
     shiScoreJoueur.textContent = `${emotJoueur} : ${scoreJoueurShi}`;
     shiScoreBot.textContent = `🤖 : ${scoreBotShi}`;
   }
-  function shiMedia(mediaQuery: MediaQueryList | MediaQueryListEvent) {
+  function shiMedia(mediaQuery: MediaQueryList) {
     const sects = [
       select("#shi-bot")!,
       select("#shi-joueur")!,
@@ -192,7 +192,7 @@ export default function accueil() {
     morpScoreX.textContent = `Joueur X : ${scoreXMorp}`;
     morpScoreO.textContent = `Joueur O : ${scoreOMorp}`;
   }
-  function morpMedia(mediaQuery: MediaQueryList | MediaQueryListEvent) {
+  function morpMedia(mediaQuery: MediaQueryList) {
     const sects = [select("#morp-score")!];
 
     for (const sect of sects) {

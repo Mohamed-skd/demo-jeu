@@ -8,8 +8,8 @@
     "dev": "concurrently -k -n \"dev:\" -c \"blue,green,white\" \"npm:dev-*\"",
     "prod": "concurrently -k -n \"prod:\" \"npm:prod-*\"",
     "dev-type": "tsc -b -w",
-    "dev-sass": "sass style.scss:app-dist/style.css -w",
-    "dev-serve": "browser-sync http://serveur-dev/jeux/ ./ -w",
+    "dev-sass": "sass --no-source-map style.scss:app-dist/style.css -w",
+    "dev-serve": "browser-sync http://dev.home/jeux/ ./ -w",
     "prod-babel": "babel app-dist --out-dir app-dist",
     "prod-postcss": "postcss app-dist/style.css -r"
   },

@@ -7,7 +7,7 @@ import {
   recupAttrib,
   select,
   selectTout,
-} from "../../app-src/js/reset.js";
+} from "../../ts/funcs.js";
 
 export default function accueil() {
   // nav site

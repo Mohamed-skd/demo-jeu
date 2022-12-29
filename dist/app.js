@@ -1,0 +1,1 @@
+import accueil from"./composants/accueil/app.js";accueil();

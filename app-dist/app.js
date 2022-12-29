@@ -1,1 +1,0 @@
-import accueil from"./composants/accueil/accueil.js";accueil();

@@ -1,4 +1,3 @@
-// RESET
 // types
 type attributHtml = {
   nom: string;
@@ -131,7 +130,7 @@ export function style(elem: HTMLElement, attrib: object = {}): void {
  */
 export function aller(
   elem: HTMLElement,
-  cadre: Window & typeof globalThis = window,
+  cadre: (Window & typeof globalThis) | HTMLElement = window,
   margeX: number = 0,
   margeY: number = 0
 ): void {
@@ -140,7 +139,7 @@ export function aller(
 
 /**
  * Mélange les characteres d'une string
- * @param {string} string string à mélanger
+ * @param {string} string String à mélanger
  * @returns {string}
  */
 export function melange(string: string): string {
@@ -162,9 +161,23 @@ export function incipit(string: string): RegExpMatchArray | null {
 }
 
 /**
+ * Retourne une string avec une majuscule sur le premier mot
+ * @param string Phrase de base
+ * @returns {string}
+ */
+export function majuscule(string: string): string {
+  let base = "";
+  const maj = string[0].trim().toUpperCase();
+  const reste = string.substring(1);
+  base = `${maj}${reste}`;
+
+  return base.trim();
+}
+
+/**
  * Retourne un nombre entier aléatoire
- * @param {number} max max des nombres aléatoire possible (exclu)
- * @param {number} min min des nombres aléatoire possible (inclus, default 0)
+ * @param {number} max Max des nombres aléatoire possible (exclu)
+ * @param {number} min Min des nombres aléatoire possible (inclus, default 0)
  * @returns {number}
  */
 export function hasard(max: number, min: number = 0): number {

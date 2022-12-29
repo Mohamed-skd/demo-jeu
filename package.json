@@ -8,10 +8,10 @@
     "dev": "concurrently -k -n \"dev:\" -c \"blue,green,white\" \"npm:dev-*\"",
     "prod": "concurrently -k -n \"prod:\" \"npm:prod-*\"",
     "dev-type": "tsc -b -w",
-    "dev-sass": "sass --no-source-map style.scss:app-dist/style.css -w",
+    "dev-sass": "sass --no-source-map src/style.scss:dist/style.css -w",
     "dev-serve": "browser-sync http://dev.home/jeux/ ./ -w",
-    "prod-babel": "babel app-dist --out-dir app-dist",
-    "prod-postcss": "postcss app-dist/style.css -r"
+    "prod-babel": "babel dist --out-dir dist",
+    "prod-postcss": "postcss dist/style.css -r"
   },
   "devDependencies": {
     "@babel/cli": "^7.18.10",

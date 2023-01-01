@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Demo Jeux, Portfolio de Diaby - Services Numérique."
+    />
+    <link rel="shortcut icon" href="../public/icone.png" type="image/png" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" type="module"></script>
+
+    <title>Jeux</title>
+  </head>
+
+  <!-- debut de page -->
+  <body>
+    <header>
+      <h1>Jeux</h1>
+    </header>
+
+    <nav id="nav-site">
+      <ul class="flex">
+        <li><button data-nav="devinette">Devinette</button></li>
+        <li><button data-nav="shifumi">Shifumi</button></li>
+        <li><button data-nav="morpion">Morpion</button></li>
+        <li><button data-nav="snake">Snake</button></li>
+        <li><button data-nav="puissance-4">Puissance 4</button></li>
+      </ul>
+    </nav>
+
+    <main>
+      <section id="devinette">
+        <h2>Devinette</h2>
+        <form method="post" id="dev-jeu" class="flex">
+          <p id="dev-info"></p>
+          <input
+            type="text"
+            name="dev-choix"
+            id="dev-choix"
+            placeholder="Choix ..."
+          />
+          <button>Valider</button>
+        </form>
+      </section>
+
+      <section id="shifumi">
+        <h2>Shifumi</h2>
+
+        <article id="shi-jeu" class="grid">
+          <aside id="shi-bot" class="flex">
+            <p class="emot">🤖</p>
+            <p id="shi-bot-choix" class="choix"></p>
+          </aside>
+
+          <aside id="shi-info" class="flex">
+            <p class="emot"></p>
+          </aside>
+
+          <aside id="shi-joueur" class="flex">
+            <p class="emot">👨</p>
+            <p id="shi-joueur-choix" class="choix"></p>
+          </aside>
+
+          <aside id="shi-choix" class="flex">
+            <p data-choix="0" class="choix">✊</p>
+            <p data-choix="1" class="choix">✋</p>
+            <p data-choix="2" class="choix">✌️</p>
+          </aside>
+
+          <aside id="shi-score" class="flex">
+            <h3>Score</h3>
+            <p id="shi-score-bot"></p>
+            <p id="shi-score-joueur"></p>
+            <button class="reset">Rejouer</button>
+          </aside>
+        </article>
+      </section>
+
+      <section id="morpion">
+        <h2>Morpion</h2>
+
+        <article id="morp-jeu" class="grid">
+          <aside id="morp-grille" class="grid"></aside>
+          <aside id="morp-score" class="flex">
+            <h3>Score</h3>
+            <p id="morp-info"></p>
+            <p id="morp-scoreX"></p>
+            <p id="morp-scoreO"></p>
+            <button class="reset">Rejouer</button>
+          </aside>
+        </article>
+      </section>
+
+      <section id="snake">
+        <h2>Snake</h2>
+        <div class="loader flex"></div>
+      </section>
+
+      <section id="puissance-4">
+        <h2>Puissance 4</h2>
+        <div class="loader flex"></div>
+      </section>
+    </main>
+
+    <footer class="flex">
+      <a
+        id="copyright"
+        href="https://github.com/Mohamed-skd"
+        target="_blank"
+        title="Github"
+      ></a>
+    </footer>
+  </body>
+  <!-- fin de page  -->
+</html>

@@ -6,13 +6,13 @@
   "license": "ISC",
   "scripts": {
     "dev": "concurrently -k -n \"dev:\" -c \"blue,green,white\" \"npm:dev-*\"",
-    "prod": "concurrently -k -n \"prod:\" \"npm:prod-*\"",
+    "prod": "npm run babel && npm run postcss && npm run html",
     "dev-type": "tsc -b -w",
     "dev-sass": "sass --no-source-map src/style.scss:dist/style.css -w",
     "dev-serve": "browser-sync http://dev.home/jeux/ ./ -w",
-    "prod-babel": "babel dist --out-dir dist",
-    "prod-html": "copyfiles -f src/**/*.html dist",
-    "prod-postcss": "postcss dist/style.css -r"
+    "babel": "babel dist --out-dir dist",
+    "html": "copyfiles -f src/**/*.html dist && copyfiles public/* dist",
+    "postcss": "postcss dist/style.css -r"
   },
   "devDependencies": {
     "@babel/cli": "^7.18.10",
